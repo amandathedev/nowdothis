@@ -28,6 +28,13 @@ function App() {
     }
   };
 
+  const handleEdit = () => {
+    setInput(tasks.join('\n'));
+    setTasks([]);
+    setCurrentTaskIndex(0);
+    setFinished(false);
+  };
+
   const handleDone = () => {
     setTasks([]);
     setFinished(false);
@@ -40,9 +47,9 @@ function App() {
           <textarea
             value={input}
             onChange={handleChange}
-            placeholder="Enter your tasks"
-            rows="30"
-            cols="40"
+            placeholder="Enter your tasks, one per line"
+            rows="10"
+            cols="30"
           />
           <br />
           <button type="submit">Start</button>
@@ -56,6 +63,7 @@ function App() {
         <div>
           <h1>{tasks[currentTaskIndex]}</h1>
           <button onClick={handleNext}>Next</button>
+          <button onClick={handleEdit}>Edit</button>
         </div>
       )}
     </div>
